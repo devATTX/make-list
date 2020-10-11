@@ -48,6 +48,7 @@ function App() {
       <Container className="p-3">
         <Jumbotron>
           <h1 className="header">MakeList</h1>
+          <h4>Add your checklist below!</h4>
         </Jumbotron>
         <Row>
           <Col>
