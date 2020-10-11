@@ -1,7 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import TodoList from "./TodoList";
 import uuidv4 from 'uuid/dist/v4'
-import "./App.css";
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const LOCAL_STORAGE_KEY = 'todoApp.todos'
 
@@ -40,15 +44,30 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>Make List!</p>
-      </header>
-      <TodoList todos={todos} toggleTodo={toggleTodo} />
-      <input ref={todoNameRef} type="text" />
-      <button onClick={handleAddTodo}>Add Todo</button>
-      <button onClick={handleClearTodos}>Clear Complete</button>
-      <div>{todos.filter(todo => !todo.complete).length} left to do</div>
+    <div className="">
+      <Container className="p-3">
+        <Jumbotron>
+          <h1 className="header">MakeList</h1>
+        </Jumbotron>
+        <Row>
+          <Col>
+            <TodoList todos={todos} toggleTodo={toggleTodo} />
+            <br />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <input ref={todoNameRef} type="text" />&#160;
+            <Button onClick={handleAddTodo}>Add Todo</Button>&#160;
+            <Button onClick={handleClearTodos}>Clear Complete</Button>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <span>{todos.filter(todo => !todo.complete).length} left to do</span>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
